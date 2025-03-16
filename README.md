@@ -21,5 +21,101 @@
 Склонируйте репозиторий на ваш компьютер:
 
 ```bash
-git clone https://github.com/ваш-username/ваш-репозиторий.git
-cd ваш-репозиторий
+git clone https://github.com/Rijo-ru/network_db_books_store
+cd network_db_books_store
+
+2. Настройка окружения
+Убедитесь, что у вас установлены Docker и Docker Compose. Если они не установлены, выполните следующие команды:
+
+bash
+Copy
+sudo apt update
+sudo apt install docker.io docker-compose -y
+sudo usermod -aG docker $USER
+newgrp docker
+3. Запуск проекта
+Запустите проект с помощью Docker Compose:
+
+bash
+Copy
+docker-compose up --build
+Эта команда:
+
+Соберет Docker-образы.
+
+Запустит контейнеры для Django и PostgreSQL.
+
+Применит миграции.
+
+Наполнит базу данных 20 книгами.
+
+Выполнит CRUD операции (обновление, удаление).
+
+4. Доступ к проекту
+После успешного запуска проект будет доступен по адресу:
+
+Django-приложение: http://localhost:8000/books/
+
+Админка Django: http://localhost:8000/admin/
+
+5. Остановка проекта
+Чтобы остановить проект, выполните:
+
+bash
+Copy
+docker-compose down
+Если вы хотите удалить все данные (включая базу данных), используйте:
+
+bash
+Copy
+docker-compose down -v
+Структура проекта
+Dockerfile: Описание Docker-образа для Django.
+
+docker-compose.yml: Конфигурация для запуска Django и PostgreSQL.
+
+requirements.txt: Зависимости Python.
+
+books/: Приложение для управления книгами.
+
+models.py: Модель Book.
+
+management/commands/populate_books.py: Команда для наполнения базы данных.
+
+book_store/: Основной проект Django.
+
+settings.py: Настройки проекта, включая подключение к PostgreSQL.
+
+Наполнение базы данных
+При запуске проекта автоматически выполняются следующие действия:
+
+Создается 20 книг с использованием библиотеки Faker.
+
+Обновляется цена для первых 10 книг (увеличение на 10%).
+
+Удаляются последние 5 книг.
+
+Используемые технологии
+Django: Веб-фреймворк для Python.
+
+PostgreSQL: Реляционная база данных.
+
+Docker: Контейнеризация приложения.
+
+Docker Compose: Управление многоконтейнерными приложениями.
+
+Faker: Генерация тестовых данных.
+
+Лицензия
+Этот проект распространяется под лицензией MIT. Подробности см. в файле LICENSE.
+
+Пример данных в базе
+После запуска проекта в базе данных будут следующие данные:
+
+Название книги	Автор	Цена	Дата публикации
+The Great Gatsby	F. Scott Fitzgerald	15.99	1925-04-10
+1984	George Orwell	12.50	1949-06-08
+To Kill a Mockingbird	Harper Lee	10.00	1960-07-11
+...	...	...	...
+Вопросы и поддержка
+Если у вас возникли вопросы или проблемы, пожалуйста, создайте issue в репозитории.
