@@ -1,0 +1,10 @@
+<h1>{{ book.title }}</h1>
+<p>Author: {{ book.author }}</p>
+<p>Price: {{ book.price }}</p>
+<p>Published Date: {{ book.published_date }}</p>
+<a href="{% url 'book_update' book.pk %}">Edit</a>
+<form action="{% url 'book_delete' book.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+<a href="{% url 'book_list' %}">Back to list</a>
