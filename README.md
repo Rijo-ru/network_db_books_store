@@ -1,3 +1,4 @@
+```
 # Книжный магазин на Django
 
 Этот проект представляет собой книжный магазин, разработанный на Django. Проект использует PostgreSQL в качестве базы данных, Docker Compose для развертывания и автоматически наполняет базу данных при запуске.
@@ -12,11 +13,25 @@
 ## Требования
 
 - Docker
-- Docker Compose
+- Docker Compose v2
 
 ## Установка и запуск
 
-### 1. Клонирование репозитория
+### 1. Установите Docker и Docker Compose v2
+
+1. **Установите Docker:**
+   - Следуйте официальной инструкции: https://docs.docker.com/get-docker/
+
+2. **Установите Docker Compose v2:**
+   - Следуйте официальной инструкции: https://docs.docker.com/compose/install/
+
+3. **Проверьте установку:**
+   ```bash
+   docker --version
+   docker compose version
+   ```
+
+### 2. Клонирование репозитория
 
 Склонируйте репозиторий на ваш компьютер:
 
@@ -25,31 +40,17 @@ git clone https://github.com/Rijo-ru/network_db_books_store.git
 cd network_db_books_store
 ```
 
-### 2. Настройка окружения
-
-Убедитесь, что у вас установлены Docker и Docker Compose. Если они не установлены, выполните следующие команды:
-
-```bash
-sudo apt update
-sudo apt install docker.io docker-compose -y
-sudo usermod -aG docker $USER
-newgrp docker
-```
-
 ### 3. Запуск проекта
 
-Запустите проект с помощью Docker Compose:
+1. **Соберите и запустите проект:**
+   ```bash
+   docker compose up --build
+   ```
 
-```bash
-docker-compose up --build
-```
-
-Эта команда:
-- Соберет Docker-образы.
-- Запустит контейнеры для Django и PostgreSQL.
-- Применит миграции.
-- Наполнит базу данных 20 книгами.
-- Выполнит CRUD операции (обновление, удаление).
+2. **Проверьте, что контейнеры запущены:**
+   ```bash
+   docker compose ps
+   ```
 
 ### 4. Доступ к проекту
 
@@ -63,13 +64,13 @@ docker-compose up --build
 Чтобы остановить проект, выполните:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 Если вы хотите удалить все данные (включая базу данных), используйте:
 
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
 
 ## Структура проекта
@@ -120,3 +121,4 @@ docker-compose down -v
 ### Вопросы и поддержка
 
 Если у вас возникли вопросы или проблемы, пожалуйста, создайте [issue](https://github.com/Rijo-ru/network_db_books_store/issues) в репозитории.
+```
